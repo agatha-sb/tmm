@@ -219,6 +219,13 @@ section[class^="asb19__"] {
   -webkit-animation: imgShine 1.5s ease-out infinite;
   animation: imgShine 1.5s ease-out infinite;
 }
+.asb19__btn--accent {
+  background-color: var(--clr-accent);
+}
+.asb19__btn--accent:hover {
+  background-color: var(--clr-tertiary);
+  border-color: var(--clr-tertiary);
+}
 .asb19__btn--white {
   color: var(--clr-white);
   border-color: var(--clr-white);
@@ -1039,6 +1046,38 @@ animation: menu-sticky 1s ease-in-out;
   height: 100%;
   border-radius: 30px;
 }
+
+.asb19__podcast--single {
+  display: block;
+  position: relative;
+  border-radius: 30px;
+  overflow: hidden;
+}
+.asb19__podcast--single img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transform: scale(1) rotate(0deg);
+  transition: all 0.5s ease-in-out;
+}
+.asb19__podcast--single:hover img {
+  transform: scale(1.1) rotate(2deg);
+  transition: all 0.5s ease-in-out;
+}
+.asb19__podcast--single::before {
+  position: absolute;
+  content: '';
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' height='100%25' viewBox='0 0 87 115' width='100%25'%3E%3Cpath clip-rule='evenodd' d='M83.99 10.81C90.08 21.24 86.62 34.66 76.26 40.79L69.05 45.06L74.17 47.38C81.58 50.74 86.52 57.99 86.96 66.17C87.40 74.34 83.23 82.09 76.26 86.24L32.76 111.97C22.41 118.10 9.08 114.61 3.00 104.18C-3.08 93.75 .37 80.33 10.73 74.20L17.94 69.93L12.82 67.61C5.41 64.25 .47 57.00 .03 48.82C-0.40 40.65 3.72 32.90 10.73 28.75L54.23 3.02C64.58 -3.10 77.91 .38 83.99 10.81Z' fill='%23f00' fill-rule='evenodd'%3E%3C/path%3E%3Cpath clip-rule='evenodd' d='M33 74L33 41L61 57.5L33 74Z' fill='white' fill-rule='evenodd'%3E%3C/path%3E%3C/svg%3E");
+  width: 100%;
+  height: 100%;
+  background-size: 50px;
+  background-repeat: no-repeat;
+  background-position: center;
+  left: 0;
+  top: 0;
+  z-index: 3;
+}
+
 /** ----------------------------
 *     Section: Podcast End
 **  --------------------------*/
@@ -1288,6 +1327,48 @@ animation: menu-sticky 1s ease-in-out;
   height: 75px;
   width: 98%;
 }
+
+
+.asb19__line--marquee__inner {
+  -webkit-font-smoothing: antialiased;
+  width: fit-content;
+  display: flex;
+  flex: auto;
+  flex-direction: row;
+}
+.asb19__line--marquee__part {
+  font-size: 30px;
+  display: inline-flex;
+  flex: 0 0 auto;
+  width: 100px;
+}
+/* .asb19__line--marquee__part span + span {
+  margin-left: 50px;
+}
+.asb19__line--marquee__part span {
+  display: inline-flex;
+  width: 1px;
+  height: 40px;
+  background-color: red;
+} */
+
+.asb19__marquee.asb19__marquee--line {
+  background-color: unset;
+}
+.asb19__marquee--line .asb19__marquee--content  {
+  width: 100vw;
+  font-size: clamp(30px, 40vw, 70px);
+}
+.asb19__marquee--line .asb19__marquee--content li {
+  padding: 0;
+  margin: 0 27px 0 0;
+  width: 300px;
+}
+.custom-fancybox-modal .fancybox__content {
+  aspect-ratio: 9/16 !important;
+  /*! height: 100% !important; */
+}
+
 /** ----------------------------
 *      Section: GIT End
 **  --------------------------*/
@@ -1325,11 +1406,12 @@ animation: menu-sticky 1s ease-in-out;
   margin-bottom: 40px;
 }
 
-.asb19__footer--main {
+.asb19__footer--wrap {
   background-color: var(--clr-secondary);
   padding: 50px 50px;
   border-radius: 30px;
   color: var(--clr-white);
+  position: relative;
 }
 
 .asb19__footer--grid {
@@ -1439,6 +1521,38 @@ color: var(--clr-white);
 .asb19__footer--bottom {
   padding-top: 30px;
   border-top: 1px solid #ffffff69;
+}
+.asb19__footer--back {
+  position: absolute;
+  bottom: 0;
+  right: 30%;
+  z-index: 2;
+}
+.asb19__footer--backToTop {
+  display: inline-flex;
+  position: relative;
+  width: 250px;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  color: var(--clr-black);
+  text-transform: capitalize;
+  font-weight: 500;
+  flex-direction: column;
+}
+.asb19__footer--backToTop::after {
+  position: absolute;
+  content: '';
+  background-image: url('../images/footer-bottom-dent.webp');
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  z-index: -1;
 }
 /** ----------------------------
 *      Section: Footer End
