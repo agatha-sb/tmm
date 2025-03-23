@@ -1,5 +1,139 @@
 gsap.registerPlugin(ScrollTrigger);
 
+
+
+
+// Ensure the button is fully visible on page load
+// gsap.set(".asb19__site--back", { opacity: 1, scale: 1 });
+
+// gsap.to(".asb19__site--back", {
+//   opacity: 0,
+//   scale: 0,
+//   duration: 0.2, 
+//   scrollTrigger: {
+//     trigger: ".asb19__footer--wrap",
+//     start: "top bottom-=100vh", // Disappear 50px before footer-wrap appears
+//     end: "top center",
+//     // scrub: true,
+//     toggleActions: "play none none reverse", // Ensures it reappears when scrolling back up
+//   },
+// });
+
+const cursor = document.querySelector(".cursor");
+        const cursorText = cursor.querySelector("span");
+        const follower = document.querySelector(".cursor__follower");
+
+        // Function to update cursor text with fade-in effect
+        function updateCursorText(text) {
+            gsap.to(cursorText, { opacity: 0, duration: 0.1, onComplete: () => {
+                cursorText.textContent = text;
+                gsap.to(cursorText, { opacity: 1, duration: 0.2 });
+            }});
+        }
+
+        // Make both cursor and follower follow the mouse
+        document.addEventListener("mousemove", (e) => {
+            gsap.to(cursor, {
+                x: e.clientX,
+                y: e.clientY,
+                duration: 0.1,
+                ease: "power2.out"
+            });
+
+            gsap.to(follower, {
+                x: e.clientX,
+                y: e.clientY,
+                duration: 0.3, // Lags slightly for smooth effect
+                ease: "power3.out"
+            });
+        });
+
+        // Link hover effects
+        document.querySelectorAll("a").forEach(link => {
+            link.addEventListener("mouseenter", () => {
+                const isView = link.classList.contains("view__link");
+                gsap.to(cursor, { scale: isView ? 10 : 4 });
+                gsap.to(follower, { scale: isView ? 4 : 2 });
+                updateCursorText(isView ? "View" : "");
+            });
+
+            link.addEventListener("mouseleave", () => {
+                gsap.to(cursor, { scale: 1 });
+                gsap.to(follower, { scale: 1 });
+                updateCursorText("");
+            });
+        });
+
+        // Swiper hover effect (Fixed)
+        document.querySelectorAll(".swiper").forEach(swiper =>{
+          
+          swiper.addEventListener("mouseenter", () => {
+              gsap.to(cursor, { scale: 10 });
+              gsap.to(follower, { scale: 4 });
+              updateCursorText("Drag");
+                cursor.classList.add("drag");
+          });
+  
+          swiper.addEventListener("mouseleave", () => {
+              gsap.to(cursor, { scale: 1 });
+              gsap.to(follower, { scale: 1 });
+              updateCursorText("");
+              cursor.classList.remove("drag");
+          });
+
+        })
+        // if (swiper) {
+        // }
+
+        // Heading hover effect
+        document.querySelectorAll(".asb19__heading").forEach(heading => {
+            heading.addEventListener("mouseenter", () => {
+                const text = heading.getAttribute("data-string");
+                gsap.to(cursor, { scale: 10 });
+                gsap.to(follower, { scale: 4 });
+                updateCursorText(text);
+            });
+
+            heading.addEventListener("mouseleave", () => {
+                gsap.to(cursor, { scale: 1 });
+                gsap.to(follower, { scale: 1 });
+                updateCursorText("");
+            });
+        });
+
+gsap.set(".asb19__site--back", { opacity: 1, scale: 1 });
+
+  gsap.to(".asb19__site--back", {
+    opacity: 0,
+    scale: 0,
+    duration: 0.2,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: ".asb19__footer",
+      start: "top bottom-=300px", // 50px before footer-wrap enters view
+      end: "top center",
+      scrub: 0.2,
+      toggleActions: "play none none reverse",
+    },
+  });
+
+  function updateProgress() {
+    let scrollTop = window.scrollY;
+    let docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    let progress = (scrollTop / docHeight) * 283;
+    document.querySelector(".progress-bar").style.strokeDashoffset = 283 - progress;
+  }
+
+  window.addEventListener("scroll", updateProgress);
+  updateProgress();
+
+  document.querySelector(".asb19__site--backToTop").addEventListener("click", (e) => {
+    e.preventDefault();
+    gsap.to(window, { scrollTo: 0, duration: 1, ease: "power2.out" });
+  });
+
+
+// console.log(left);
 function setupGSAPAnimations() {
   ScrollTrigger.getAll().forEach(trigger => trigger.kill());
   gsap.globalTimeline.clear();
@@ -70,21 +204,21 @@ function setupGSAPAnimations() {
     var colors = ["#fff"];
 
 //initially colorize each box and position in a row
-gsap.set(".box", {
-  backgroundColor: (i) => colors[i % colors.length],
-  x: (i) => i * 50
-});
+// gsap.set(".box", {
+//   backgroundColor: (i) => colors[i % colors.length],
+//   x: (i) => i * 50
+// });
 
 
-gsap.to(".box", {
-  duration: 5,
-  ease: "none",
-  x: "+=500", //move each box 500px to right
-  modifiers: {
-    x: gsap.utils.unitize(x => parseFloat(x) % 500) //force x value to be between 0 and 500 using modulus
-  },
-  repeat: -1
-});
+// gsap.to(".box", {
+//   duration: 5,
+//   ease: "none",
+//   x: "+=500", //move each box 500px to right
+//   modifiers: {
+//     x: gsap.utils.unitize(x => parseFloat(x) % 500) //force x value to be between 0 and 500 using modulus
+//   },
+//   repeat: -1
+// });
     
     const init = () => {
       const marquee = document.querySelectorAll('.asb19__marquee')

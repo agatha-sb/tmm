@@ -32,13 +32,24 @@
   .asb19__header--nav .navbar-nav {
     column-count: 2;
       display: block;
+      transition: all 0.3s ease-in-out;
     }
+    .asb19__header.fixed__header .asb19__header--nav .navbar-nav {
+      column-count: unset;
+      display: inherit;
+      gap: 30px;transition: all 0.3s ease-in-out;
+    }
+    .asb19__header.fixed__header .asb19__header--nav .asb19__header--right {padding: 0;}
     .asb19__header--nav .asb19__header--right {
       display: flex;
       align-items: center;
       gap: 40px;
       padding: 15px 0 15px 50px;
   position: relative;
+    }
+    .asb19__header.fixed__header .asb19__header--nav .navbar-brand {
+      padding: 8px 0;
+        max-width: 100px;
     }
     .asb19__header--nav .asb19__header--right::before {
       position: absolute;
@@ -48,6 +59,7 @@
       background-color: #52525224;
       left: 0;
     }
+    .asb19__header.fixed__header .asb19__header--nav .asb19__header--right::before {display: none;}
 }    
 @media only screen and (max-width: 991.98px) {    
 

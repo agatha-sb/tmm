@@ -4,17 +4,20 @@
 // * ++++++++ 01. Header sticky & navbar +++++++++ * //
 // ************************************************* //
 
-// $(window).on('scroll', function() {
-//   if($(this).scrollTop() > 250 ) {
-//     $(".asb19__header").addClass("fixed__header");
-//     $(".header-top").slideUp();
-//   } else {
-//     $(".asb19__header").removeClass("fixed__header");
-//     $(".header-top").slideDown();
-//   }
-// });
+$(window).on('scroll', function() {
+  if($(this).scrollTop() > 450 ) {
+    $(".asb19__header").addClass("fixed__header");
+    // $(".header-top").slideUp();
+  } else {
+    $(".asb19__header").removeClass("fixed__header");
+    // $(".header-top").slideDown();
+  }
+});
 
-
+$(".asb19__miles--single").on("mouseover", function () {
+  $(".asb19__miles--single").removeClass("active");
+  $(this).toggleClass("active");
+})
 
 // ************************************************* //
 // * ++++++++      02. Fancybox          +++++++++ * //
