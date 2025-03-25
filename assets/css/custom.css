@@ -2299,3 +2299,122 @@ margin-bottom: 0;
   font-family: var(--ff-primary);
   margin-top: 25px;
 }
+
+
+
+
+.asb19__services--inner .nav.nav-tabs {
+  gap: 15px;
+  border: none;
+}
+.asb19__services--inner .nav-tabs .nav-link {
+  border-radius: 50px;
+  background-color: var(--clr-white);
+  color: var(--clr-secondary);
+  border-color: var(--clr-secondary);
+}
+.asb19__services--inner .nav-tabs .nav-link.active {
+  background-color: var(--clr-secondary);
+  color: var(--clr-white);
+  border-color: transparent;
+}
+.asb19__services--inner .tab-content {
+  margin-top: 50px;
+}
+
+.asb19__cta--mkt-main {
+  background-color: #F6F6F6;
+  border-radius: 30px;
+  padding-bottom: 160px;
+}
+.asb19__cta--mkt-main::after {
+  position: absolute;
+  content: attr(data-dent);
+  background-image: url('../images/horizontal-dent-bottom.webp');
+  right: 80px;
+  bottom: 0px;
+  font-size: 18px;
+  padding: 19px 45px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  z-index: 0;
+  min-height: 65px;
+}
+.asb19__cta--mkt-cm {
+  position: relative;
+  z-index: 1;
+  max-width: 90%;
+}
+.asb19__cta--mkt-left {
+  margin: 0px auto 0px 0;
+}
+.asb19__cta--mkt-right {
+  margin: 60px 0 0px auto;
+}
+.asb19__cta--mkt-cm::after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--clr-secondary);
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  border-radius: 300px;
+  animation: stagger-horizontal 4s  infinite both ease-in-out 0.3s;
+}
+.asb19__cta--mkt-cm .asb19__img {
+  border-radius: 300px;
+  overflow: hidden;
+}
+
+.asb19__cta--mkt-tag {
+  position: absolute;
+  background-color: var(--clr-white);
+  border-radius: 50px;
+  display: flex;
+  padding: 7px 23px 7px 10px;
+  align-items: center;
+  gap: 10px;
+  z-index: 3;
+}
+
+.asb19__cta--mkt-tag .icon {
+  background-color: var(--clr-secondary);
+  display: inline-flex;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: var(--clr-white);
+  justify-content: center;
+  align-items: center;
+}
+.asb19__cta--mkt-left .asb19__cta--mkt-tag {
+  right: 0;
+  bottom: 100px;
+}
+.asb19__cta--mkt-right .asb19__cta--mkt-tag {
+  bottom: 50px;
+  left: 0;
+}
+@keyframes stagger-horizontal {
+  0%  {
+    transform: translateX(0);
+  }
+  50%  {
+    transform: translateX(-20px);
+  }
+  100%  {
+    transform: translateX(0px);
+  }
+}
+
+
+.asb19__git--images {
+  gap: 20px;
+  align-items: flex-end;
+  margin-top: -80px;
+}
+.asb19__git--images .asb19__img img {
+  border-radius: 30px;
+}
